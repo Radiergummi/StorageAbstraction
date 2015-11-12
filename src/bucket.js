@@ -20,7 +20,7 @@ function Bucket (options)
      */
     driver: 'localStorage'
   }
-  
+
   // merge the given options with our defaults
   options = $.extend(defaults, options)
 
@@ -65,8 +65,7 @@ function Bucket (options)
    * retrieves a key from our session storage
    *
    * @param {string} key      the key to find
-   * @param {mixed} fallback  a fallback value in case the key cannot be
-   *                          found
+   * @param {mixed} fallback  a fallback value in case the key cannot be found
    *
    * @return {mixed}          the content of our key
    */
@@ -98,6 +97,7 @@ function Bucket (options)
     // set the key and its value
     this.storage[key] = value
     
+    // trigger the drivers set function
     this.storageFactory.set(key, value)
   }
   
@@ -115,6 +115,7 @@ function Bucket (options)
     // delete the key
     delete this.storage.key
     
+    // trigger the drivers remove function
     this.storageFactory.remove(key)
   }
   
@@ -134,10 +135,18 @@ function Bucket (options)
   }
 	
 	
+	/**
+	 * clear function.
+	 * clears the entire storage.
+	 * 
+	 * @return void
+	 */
 	this.clear = function ()
 	{
+		// set the live storage to an empty object
 		this.storage = {}
 		
+		// trigger the drivers clear function
 		this.storageFactory.clear()
 	}
   
