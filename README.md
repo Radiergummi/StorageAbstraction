@@ -29,18 +29,26 @@ returns the complete stored data object
 
 First, create a storage object:
 
+````js
     var dataStore = new Bucket({driver: 'localStorage'})
-    
+````
+
 Feed it some data:
 
+````js
     dataStore.set('foo', 'bar')
     dataStore.set('baz', [{test: 'abc'}, 1, 2, "foobar", 6])
-    
+````
+
 Check them:
 
+````js
     dataStore.get('foo') // bar
+````
 
 Reload your browser, check again:
 
+````js
     var dataStoreNew = new Bucket({driver: 'localStorage'})
     dataStoreNew.get('foo') // bar
+````
