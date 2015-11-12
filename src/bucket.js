@@ -52,7 +52,7 @@ function Bucket (options)
     // set the driver to use
     this.driver = options.driver
 
-		// initialize our storage driver
+    // initialize our storage driver
     this.storageFactory = new StorageAbstraction(this.driver)
 
 		// restore all keys from the permanent storage
@@ -96,12 +96,12 @@ function Bucket (options)
   {
     // set the key and its value
     this.storage[key] = value
-    
+
     // trigger the drivers set function
     this.storageFactory.set(key, value)
   }
-  
-  
+
+
   /**
    * remove function.
    * removes a key from the session storage
@@ -114,12 +114,12 @@ function Bucket (options)
   {
     // delete the key
     delete this.storage.key
-    
+
     // trigger the drivers remove function
     this.storageFactory.remove(key)
   }
-  
-  
+
+
   /**
    * has function.
    * checks if a key exists in the storage.
@@ -133,8 +133,8 @@ function Bucket (options)
     // check for presence
     return (key in this.storage)
   }
-	
-	
+
+
 	/**
 	 * clear function.
 	 * clears the entire storage.
@@ -149,8 +149,8 @@ function Bucket (options)
 		// trigger the drivers clear function
 		this.storageFactory.clear()
 	}
-  
-  
+
+
   /**
    * dump function.
    * returns the complete storage object.
@@ -162,18 +162,18 @@ function Bucket (options)
     // return the complete storage
     return this.storage
   }
-	
-	
+
+  
 	/**
 	 * getAll function.
 	 * Alias function for dump.
 	 *
-   * @return {object}  the storage object.
+	 * @return {object}  the storage object.
 	 */
-	this.getAll = function ()
-	{
-		return this.dump()
-	}
+  this.getAll = function ()
+  {
+    return this.dump()
+  }
   
   
   // execution
