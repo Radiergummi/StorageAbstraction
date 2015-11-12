@@ -24,3 +24,23 @@ purges the storage
 
 ### `dump()` or `getAll()`
 returns the complete stored data object
+
+## Usage
+
+First, create a storage object:
+
+    var dataStore = new Bucket({driver: 'localStorage'})
+    
+Feed it some data:
+
+    dataStore.set('foo', 'bar')
+    dataStore.set('baz', [{test: 'abc'}, 1, 2, "foobar", 6])
+    
+Check them:
+
+    dataStore.get('foo') // bar
+
+Reload your browser, check again:
+
+    var dataStoreNew = new Bucket({driver: 'localStorage'})
+    dataStoreNew.get('foo') // bar
